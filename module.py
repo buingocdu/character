@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from unicodedata import name
-
+from __future__ import annotations
 @dataclass(order=True)
 class Skill:
     """Bộ kỹ năng"""
@@ -39,7 +39,7 @@ class Character:
         self.tank = tank
         self.skills = skills
         pass    
-    def used_skill(self,character):
+    def used_skill(self,character:Character):
         """Sử dụng bộ kỹ năng"""
         if self.status==0:
             print ("Nhân vật đã chết, k thể sử dụng kỹ năng")
@@ -60,7 +60,7 @@ class Character:
         if self.blood<=0:
             self.status = 0 
             print("Nhân vật {self.name} đã chết")     
-    def attack(self,character, skill: Skill):
+    def attack(self,character:Character, skill: Skill):
         b = skill.damage-character.tank
         if b>0:
             character.blood-=b
